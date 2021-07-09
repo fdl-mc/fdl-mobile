@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../pallettes.dart';
+import '../constants/pallettes.dart';
 
 class AboutPage extends StatelessWidget {
   @override
