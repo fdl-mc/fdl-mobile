@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freedomland/ui/general/gradient_app_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/pallettes.dart';
@@ -7,16 +8,13 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: GradientAppBar(
         centerTitle: true,
         title: Text('О приложении'),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[primaryP.shade800, primaryP.shade500])),
-        ),
+        gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: <Color>[primaryP.shade800, primaryP.shade500]),
       ),
       body: Center(
         child: Column(

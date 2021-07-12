@@ -17,6 +17,8 @@ class UserController extends GetxController with StateMixin<UserModel> {
     }
   }
 
+  Future<void> pay() async {}
+
   @override
   void onInit() {
     fetchUser();

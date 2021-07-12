@@ -1,16 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:freedomland/constants/routes.dart';
 import 'package:freedomland/controller/bindings/initial_binding.dart';
-import 'package:freedomland/pages/splash_screen.dart';
+import 'package:freedomland/ui/splash_screen.dart';
 import 'package:get/get.dart';
 
 import 'constants/pallettes.dart';
 
-void main() async {
-  await Firebase.initializeApp();
+Future<void> main() async {
+  print('booba');
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(new App());
@@ -26,7 +26,17 @@ class App extends StatelessWidget {
           appBarTheme: AppBarTheme(brightness: Brightness.dark),
           primarySwatch: primaryP,
           accentColor: secondaryP,
-          fontFamily: 'Ubuntu'),
+          inputDecorationTheme: InputDecorationTheme(
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8.0),
+                borderSide: BorderSide(color: Colors.black26)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+          ),
+          // buttonTheme: ButtonThemeData(buttonColor: ),
+          fontFamily: 'Montserrat'),
       home: SplashScreen(),
     );
   }

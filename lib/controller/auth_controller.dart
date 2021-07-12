@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freedomland/controller/bindings/user_binding.dart';
-import 'package:freedomland/pages/home_page.dart';
-import 'package:freedomland/pages/login_page.dart';
+import 'package:freedomland/ui/home_page/home_page.dart';
+import 'package:freedomland/ui/login_page.dart';
+import 'package:freedomland/utils/build_snackbar.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
@@ -13,7 +14,7 @@ class AuthController extends GetxController {
   void onInit() {
     super.onInit();
     _firebaseUser.bindStream(_auth.authStateChanges());
-    Get.testMode = true;
+    // Get.testMode = true;
 
     _auth.authStateChanges().listen(_handleAuthChange);
   }
@@ -29,6 +30,14 @@ class AuthController extends GetxController {
       });
     } catch (e) {
       Get.snackbar("Ошибка", e.toString(), snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      Get.showSnackbar(buildSnackbar(text: 'Ошибка выхода из аккаунта'));
     }
   }
 

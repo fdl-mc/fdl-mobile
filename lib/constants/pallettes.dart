@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-MaterialColor primaryP = MaterialColor(0xFF1285FF, primaryMap);
-Map<int, Color> primaryMap = {
+const MaterialColor primaryP = MaterialColor(0xFF1285FF, primaryMap);
+const Map<int, Color> primaryMap = {
   50: Color(0xFFE2F2FF),
   100: Color(0xFFBADEFF),
   200: Color(0xFF8DC9FF),
@@ -14,8 +14,8 @@ Map<int, Color> primaryMap = {
   900: Color(0xFF223FB9)
 };
 
-MaterialColor secondaryP = MaterialColor(0xFF3D9200, secondaryMap);
-Map<int, Color> secondaryMap = {
+const MaterialColor secondaryP = MaterialColor(0xFF3D9200, secondaryMap);
+const Map<int, Color> secondaryMap = {
   50: Color(0xFFF0F9E7),
   100: Color(0xFFD9F0C2),
   200: Color(0xFFC0E59B),

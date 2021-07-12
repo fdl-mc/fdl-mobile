@@ -1,0 +1,1 @@
+enum SelectedSection { settings, about }
