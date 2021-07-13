@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:freedomland/constants/pallettes.dart';
 import 'package:freedomland/controller/payement_controller.dart';
+import 'package:freedomland/ui/general/bottom_sheet_page.dart';
 import 'package:freedomland/ui/general/gradient_button.dart';
 import 'package:get/get.dart';
 
@@ -10,15 +11,8 @@ class PaymentSheet extends GetView<PaymentController> {
   Widget build(BuildContext context) {
     return Obx(
       () {
-        return Container(
+        return BottomSheetPage(
           height: 330,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [BoxShadow(blurRadius: 8, color: Colors.black38)],
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              )),
           child: Scrollbar(
             thickness: 2,
             child: ListView(
