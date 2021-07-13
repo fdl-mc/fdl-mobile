@@ -24,6 +24,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      defaultTransition: Transition.cupertino,
       initialBinding: InitialBinding(),
       theme: ThemeData(
           appBarTheme: AppBarTheme(brightness: Brightness.dark),

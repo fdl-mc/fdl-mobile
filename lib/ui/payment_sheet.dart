@@ -48,6 +48,7 @@ class PaymentSheet extends GetView<PaymentController> {
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 16)),
                 TextFormField(
+                  enabled: !controller.fetching,
                   keyboardType: TextInputType.name,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
@@ -65,6 +66,7 @@ class PaymentSheet extends GetView<PaymentController> {
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 16)),
                 TextFormField(
+                  enabled: !controller.fetching,
                   keyboardType: TextInputType.number,
                   controller: controller.amountController,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],

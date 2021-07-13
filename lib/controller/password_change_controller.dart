@@ -33,4 +33,10 @@ class PasswordChangeController extends GetxController {
       );
     }
   }
+
+  void clearValues() {
+    oldPasswordController.clear();
+    passwordController.clear();
+    confirmController.clear();
+  }
 }

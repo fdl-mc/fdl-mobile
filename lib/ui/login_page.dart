@@ -29,7 +29,9 @@ class LoginPage extends GetView<AuthController> {
             ElevatedButton(
                 onPressed: () {
                   controller.login(
-                      usernameController.text, passwordController.text);
+                    usernameController.text,
+                    passwordController.text,
+                  );
                 },
                 child: Padding(
                   padding: EdgeInsets.all(16),
