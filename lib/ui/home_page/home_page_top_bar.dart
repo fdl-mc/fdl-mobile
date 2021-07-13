@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freedomland/constants/enums.dart';
 import 'package:freedomland/constants/pallettes.dart';
+import 'package:freedomland/controller/bindings/settings_binding.dart';
 import 'package:freedomland/controller/payement_controller.dart';
 import 'package:freedomland/model/user_model.dart';
 import 'package:freedomland/ui/payment_sheet.dart';
@@ -65,7 +66,10 @@ class HomePageTopBar extends StatelessWidget {
                     onSelected: (SelectedSection ss) {
                       switch (ss) {
                         case SelectedSection.settings:
-                          Get.to(() => SettingsPage());
+                          Get.to(
+                            () => SettingsPage(),
+                            binding: SettingsBinding(),
+                          );
                           break;
                         case SelectedSection.about:
                           // Get.to(() => AboutPage());

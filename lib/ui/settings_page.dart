@@ -34,9 +34,6 @@ class SettingsPage extends StatelessWidget {
               onTap: () {
                 Get.to(
                   () => PasswordChangePage(),
-                  binding: BindingsBuilder.put(
-                    () => PasswordChangeController(),
-                  ),
                 )?.then(
                   (_) => Get.find<PasswordChangeController>().clearValues(),
                 );

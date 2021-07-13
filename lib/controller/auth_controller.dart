@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:freedomland/controller/bindings/user_binding.dart';
+import 'package:freedomland/controller/bindings/home_binding.dart';
 import 'package:freedomland/ui/home_page/home_page.dart';
 import 'package:freedomland/ui/login_page.dart';
 import 'package:freedomland/utils/build_snackbar.dart';
