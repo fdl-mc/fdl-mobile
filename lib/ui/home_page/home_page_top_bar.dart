@@ -107,7 +107,7 @@ class HomePageTopBar extends StatelessWidget {
               text: TextSpan(
                 text: '${state.balance}',
                 style: TextStyle(
-                    fontFamily: 'Ubuntu',
+                    fontFamily: 'Montserrat',
                     color: Colors.white,
                     fontSize: 56,
                     fontWeight: FontWeight.bold),
@@ -115,7 +115,7 @@ class HomePageTopBar extends StatelessWidget {
                   TextSpan(
                     text: ' ИБ',
                     style: TextStyle(
-                        fontFamily: 'Ubuntu',
+                        fontFamily: 'Montserrat',
                         color: Colors.white,
                         fontSize: 52,
                         fontWeight: FontWeight.w300),

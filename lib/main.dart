@@ -10,8 +10,12 @@ import 'constants/pallettes.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
+  ).then((_) {
     runApp(new App());
   });
 }
@@ -28,8 +32,9 @@ class App extends StatelessWidget {
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
             enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-                borderSide: BorderSide(color: Colors.black26)),
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide(color: Colors.black26),
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
             ),
