@@ -27,14 +27,14 @@ class PaymentController extends GetxController {
     final payee = usernameController.value.text;
     final amount = int.tryParse(
       amountController.value.text,
-    )!;
+    );
 
-    if ((payee.isBlank ?? false) || payee.length < 3) {
+    if (payee.length < 3) {
       showErrorSnackbar(
         title: 'Ошибка',
         text: 'Введите корректное имя пользователя',
       );
-    } else if (amount < 1) {
+    } else if (amount == null || amount < 1) {
       showErrorSnackbar(
         title: 'Ошибка',
         text: 'Введите корректную сумму.',
