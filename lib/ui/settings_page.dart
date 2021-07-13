@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:freedomland/constants/pallettes.dart';
 import 'package:freedomland/controller/auth_controller.dart';
-import 'package:freedomland/controller/user_controller.dart';
+import 'package:freedomland/controller/password_change_controller.dart';
 import 'package:freedomland/ui/general/gradient_app_bar.dart';
-import 'package:freedomland/utils/build_snackbar.dart';
+import 'package:freedomland/ui/password_change_page.dart';
 import 'package:get/get.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -32,10 +32,10 @@ class SettingsPage extends StatelessWidget {
               title: Text('Изменить пароль'),
               leading: Icon(Icons.password_outlined),
               onTap: () {
-                Get.showSnackbar(
-                  buildSnackbar(
-                    text:
-                        'пока нельзя, я ленивая жопа бамсь бомсь бамсь бомсь бамсь бомсь я все',
+                Get.to(
+                  () => PasswordChangePage(),
+                  binding: BindingsBuilder.put(
+                    () => PasswordChangeController(),
                   ),
                 );
               },

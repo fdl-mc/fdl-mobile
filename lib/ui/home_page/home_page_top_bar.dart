@@ -103,12 +103,25 @@ class HomePageTopBar extends StatelessWidget {
               style: TextStyle(
                   color: Color.fromARGB(190, 255, 255, 255), fontSize: 20),
             ),
-            Text(
-              '${state.balance} ИБ',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 56,
-                  fontWeight: FontWeight.bold),
+            RichText(
+              text: TextSpan(
+                text: '${state.balance}',
+                style: TextStyle(
+                    fontFamily: 'Ubuntu',
+                    color: Colors.white,
+                    fontSize: 56,
+                    fontWeight: FontWeight.bold),
+                children: [
+                  TextSpan(
+                    text: ' ИБ',
+                    style: TextStyle(
+                        fontFamily: 'Ubuntu',
+                        color: Colors.white,
+                        fontSize: 52,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 32),

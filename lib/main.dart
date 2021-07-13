@@ -34,7 +34,6 @@ class App extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.0),
             ),
           ),
-          // buttonTheme: ButtonThemeData(buttonColor: ),
           fontFamily: 'Montserrat'),
       home: SplashScreen(),
     );

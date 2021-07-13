@@ -3,6 +3,7 @@ import 'package:freedomland/controller/bindings/user_binding.dart';
 import 'package:freedomland/ui/home_page/home_page.dart';
 import 'package:freedomland/ui/login_page.dart';
 import 'package:freedomland/utils/build_snackbar.dart';
+import 'package:freedomland/utils/snackbars.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
@@ -20,6 +21,8 @@ class AuthController extends GetxController {
   }
 
   Future<void> login(String username, String password) async {
+    print(username);
+    print(password);
     try {
       await _auth
           .signInWithEmailAndPassword(
@@ -29,7 +32,11 @@ class AuthController extends GetxController {
         _handleAuthChange(user);
       });
     } catch (e) {
-      Get.snackbar("Ошибка", e.toString(), snackPosition: SnackPosition.BOTTOM);
+      print('SUS IMPOSTER: $e');
+      showErrorSnackbar(
+        title: "Ошибка",
+        text: e.toString(),
+      );
     }
   }
 
@@ -37,7 +44,23 @@ class AuthController extends GetxController {
     try {
       await _auth.signOut();
     } catch (e) {
-      Get.showSnackbar(buildSnackbar(text: 'Ошибка выхода из аккаунта'));
+      showErrorSnackbar(
+        text: 'Ошибка выхода из аккаунта: ${e.toString()}',
+      );
+    }
+  }
+
+  Future<void> changePassword(
+      String username, String oldPassword, String password) async {
+    try {
+      await login(username, oldPassword);
+      await user?.updatePassword(password);
+      showSuccessSnackbar(text: 'Пароль успешно изменён!');
+    } catch (e) {
+      print(e);
+      showErrorSnackbar(
+        text: 'Ошибка смены пароля: ${e.toString()}',
+      );
     }
   }
 
