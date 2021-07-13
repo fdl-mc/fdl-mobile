@@ -6,7 +6,7 @@ import 'package:freedomland/utils/build_snackbar.dart';
 import 'package:freedomland/utils/snackbars.dart';
 import 'package:get/get.dart';
 
-class AuthController extends GetxController {
+class AuthController extends GetxService {
   final _auth = FirebaseAuth.instance;
   final _firebaseUser = FirebaseAuth.instance.currentUser.obs;
   User? get user => _firebaseUser.value;
@@ -69,7 +69,7 @@ class AuthController extends GetxController {
       Get.offAll(() => LoginPage());
       // Get.offAllNamed('/login');
     } else {
-      Get.offAll(() => HomePage(), binding: UserBinding());
+      Get.offAll(() => HomePage(), binding: HomeBinding());
       // Get.offAllNamed('/home');
     }
   }
