@@ -20,6 +20,7 @@ dependencies:
     firebase_auth: ^2.0.0
     gradient_widgets: ^0.6.0
     flutter_launcher_icons: ^0.9.0
+    responsive_framework: ^0.1.4
 
 dev_dependencies:
     flutter_test:

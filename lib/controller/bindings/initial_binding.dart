@@ -8,6 +8,6 @@ class InitialBinding extends Bindings {
   void dependencies() {
     Get.put<UserProvider>(UserProvider(), permanent: true);
     Get.put<AuthController>(AuthController(), permanent: true);
-    Get.put<UserController>(UserController());
+    // Get.put<UserController>(UserController());
   }
 }
