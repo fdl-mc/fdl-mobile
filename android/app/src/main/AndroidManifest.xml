@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dev.arslee.freedomland">
    <application
-        android:label="freedomland"
+        android:label="FreedomLand"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
