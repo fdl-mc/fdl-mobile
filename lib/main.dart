@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'constants/pallettes.dart';
 
 Future<void> main() async {
-  print('booba');
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])

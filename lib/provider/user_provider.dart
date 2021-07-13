@@ -21,6 +21,6 @@ class UserProvider extends GetConnect {
   }
 
   Future<Response<String>> pay(String payer, String payee, int amount) async {
-    return await get('pay?payer=$payer&payee=$payee&amount$amount');
+    return await get('pay?payer=$payer&payee=$payee&amount=$amount');
   }
 }

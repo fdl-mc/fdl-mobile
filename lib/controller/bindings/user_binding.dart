@@ -6,6 +6,6 @@ class UserBinding extends Bindings {
   @override
   void dependencies() {
     Get.put<UserController>(UserController());
-    Get.lazyPut<PaymentController>(() => PaymentController());
+    Get.put<PaymentController>(PaymentController());
   }
 }
