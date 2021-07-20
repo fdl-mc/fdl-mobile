@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freedomland/controller/auth_controller.dart';
+import 'package:freedomland/ui/general/bottom_margin.dart';
 import 'package:get/state_manager.dart';
 
 class LoginPage extends GetView<AuthController> {
@@ -19,24 +20,25 @@ class LoginPage extends GetView<AuthController> {
               decoration: InputDecoration(labelText: 'Никнейм'),
               controller: usernameController,
             ),
-            Padding(padding: EdgeInsets.only(bottom: 8.0)),
+            BottomMargin(8),
             TextFormField(
               obscureText: true,
               decoration: InputDecoration(labelText: 'Пароль'),
               controller: passwordController,
             ),
-            Padding(padding: EdgeInsets.only(bottom: 8.0)),
+            BottomMargin(8),
             ElevatedButton(
-                onPressed: () {
-                  controller.login(
-                    usernameController.text,
-                    passwordController.text,
-                  );
-                },
-                child: Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Text('Войти'),
-                )),
+              onPressed: () {
+                controller.login(
+                  usernameController.text,
+                  passwordController.text,
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Text('Войти'),
+              ),
+            ),
           ],
         ),
       ),

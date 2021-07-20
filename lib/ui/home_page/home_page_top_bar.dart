@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:freedomland/constants/enums.dart';
+import 'package:freedomland/constants/home_gradients.dart';
 import 'package:freedomland/constants/pallettes.dart';
 import 'package:freedomland/controller/bindings/settings_binding.dart';
 import 'package:freedomland/controller/payement_controller.dart';
 import 'package:freedomland/model/user_model.dart';
 import 'package:freedomland/ui/payment_sheet.dart';
 import 'package:freedomland/ui/settings_page.dart';
+import 'package:freedomland/utils/app_color.dart';
 import 'package:freedomland/utils/build_snackbar.dart';
 import 'package:get/get.dart';
 
 class HomePageTopBar extends StatelessWidget {
   final UserModel state;
 
-  const HomePageTopBar({required this.state});
+  const HomePageTopBar({
+    required this.state,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +27,7 @@ class HomePageTopBar extends StatelessWidget {
           bottomEnd: Radius.circular(16),
           bottomStart: Radius.circular(16),
         ),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft, end: Alignment.bottomRight,
-          // [secondaryP.shade400, primaryP.shade400]
-          colors: [
-            secondaryP.shade400,
-            primaryP.shade400,
-          ],
-        ),
+        gradient: getAppColorFromStorage().backgroundGradient,
       ),
       child: Padding(
         padding: EdgeInsets.only(top: 38, bottom: 32, left: 18, right: 18),

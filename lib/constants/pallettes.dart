@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@Deprecated('юзай градиенты чел')
 const MaterialColor primaryP = MaterialColor(0xFF1285FF, primaryMap);
 const Map<int, Color> primaryMap = {
   50: Color(0xFFE2F2FF),
@@ -14,6 +15,7 @@ const Map<int, Color> primaryMap = {
   900: Color(0xFF223FB9)
 };
 
+@Deprecated('юзай градиенты чел')
 const MaterialColor secondaryP = MaterialColor(0xFF3D9200, secondaryMap);
 const Map<int, Color> secondaryMap = {
   50: Color(0xFFF0F9E7),

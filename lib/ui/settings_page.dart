@@ -4,6 +4,8 @@ import 'package:freedomland/controller/auth_controller.dart';
 import 'package:freedomland/controller/password_change_controller.dart';
 import 'package:freedomland/ui/general/gradient_app_bar.dart';
 import 'package:freedomland/ui/password_change_page.dart';
+import 'package:freedomland/ui/theme_change_page.dart';
+import 'package:freedomland/utils/app_color.dart';
 import 'package:get/get.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -15,22 +17,30 @@ class SettingsPage extends StatelessWidget {
       appBar: GradientAppBar(
         centerTitle: true,
         title: Text('Настройки'),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: <Color>[
-            primaryP.shade800,
-            primaryP.shade500,
-          ],
-        ),
+        gradient: getAppColorFromStorage().primaryGradient,
       ),
       body: ListView(
         children: ListTile.divideTiles(
           context: context,
           tiles: [
             ListTile(
+              contentPadding: EdgeInsets.all(8),
+              title: Text('Сменить тему оформления'),
+              leading: Padding(
+                child: Icon(Icons.palette_outlined),
+                padding: EdgeInsets.all(8),
+              ),
+              onTap: () {
+                Get.to(() => ThemeChangePage());
+              },
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.all(8),
               title: Text('Изменить пароль'),
-              leading: Icon(Icons.password_outlined),
+              leading: Padding(
+                child: Icon(Icons.password_outlined),
+                padding: EdgeInsets.all(8),
+              ),
               onTap: () {
                 Get.to(
                   () => PasswordChangePage(),
@@ -40,8 +50,12 @@ class SettingsPage extends StatelessWidget {
               },
             ),
             ListTile(
+              contentPadding: EdgeInsets.all(8),
               title: Text('Выйти'),
-              leading: Icon(Icons.logout_outlined),
+              leading: Padding(
+                child: Icon(Icons.logout_outlined),
+                padding: EdgeInsets.all(8),
+              ),
               onTap: authController.logout,
             ),
           ],

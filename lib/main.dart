@@ -1,60 +1,75 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:freedomland/controller/bindings/initial_binding.dart';
 import 'package:freedomland/ui/splash_screen.dart';
+import 'package:freedomland/utils/app_color.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 // import 'package:responsive_framework/responsive_framework.dart';
 
 import 'constants/pallettes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
+  await GetStorage.init();
+
   SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ],
   ).then((_) {
-    runApp(new App());
+    runApp(Phoenix(child: App()));
   });
 }
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final appColor = getAppColorFromStorage();
     return GetMaterialApp(
-      // builder: (context, widget) {
-      //   return ResponsiveWrapper.builder(
-      //     widget,
-      //     // maxWidth: 1200,
-      //     minWidth: 480,
-      //     defaultScale: true,
-      //     breakpoints: [
-      //       ResponsiveBreakpoint.resize(600, name: MOBILE),
-      //       ResponsiveBreakpoint.autoScale(1000, name: TABLET),
-      //       ResponsiveBreakpoint.resize(1280, name: DESKTOP),
-      //     ],
-      //   );
-      // },
       defaultTransition: Transition.cupertino,
       initialBinding: InitialBinding(),
       theme: ThemeData(
-          appBarTheme: AppBarTheme(brightness: Brightness.dark),
-          primarySwatch: primaryP,
-          accentColor: secondaryP,
-          inputDecorationTheme: InputDecorationTheme(
-            filled: true,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.0),
-              borderSide: BorderSide(color: Colors.black26),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
+        appBarTheme: AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+          brightness: Brightness.dark,
+          foregroundColor: Colors.white,
+        ),
+        primaryColor: appColor.primaryColor,
+        accentColor: appColor.secondaryColor,
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: appColor.primaryColor,
+          selectionColor: appColor.primaryColor.withAlpha(64),
+          selectionHandleColor: appColor.primaryColor,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(appColor.primaryColor),
           ),
-          fontFamily: 'Montserrat'),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: BorderSide(color: appColor.primaryColor),
+          ),
+          labelStyle: TextStyle(color: Colors.black54),
+          focusColor: appColor.primaryColor,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: BorderSide(color: Colors.black26),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+        ),
+        fontFamily: 'Montserrat',
+      ),
       home: SplashScreen(),
     );
   }

@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freedomland/controller/bindings/home_binding.dart';
 import 'package:freedomland/ui/home_page/home_page.dart';
 import 'package:freedomland/ui/login_page.dart';
-import 'package:freedomland/utils/build_snackbar.dart';
 import 'package:freedomland/utils/snackbars.dart';
 import 'package:get/get.dart';
 
@@ -21,8 +20,6 @@ class AuthController extends GetxService {
   }
 
   Future<void> login(String username, String password) async {
-    print(username);
-    print(password);
     try {
       await _auth
           .signInWithEmailAndPassword(

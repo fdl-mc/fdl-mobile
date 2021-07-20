@@ -21,6 +21,8 @@ dependencies:
     gradient_widgets: ^0.6.0
     flutter_launcher_icons: ^0.9.0
     responsive_framework: ^0.1.4
+    get_storage: ^2.0.2
+    flutter_phoenix: ^1.0.0
 
 dev_dependencies:
     flutter_test:

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freedomland/constants/pallettes.dart';
+import 'package:freedomland/utils/app_color.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -9,17 +9,9 @@ class SplashScreen extends StatelessWidget {
         child: Center(
           child: ShaderMask(
             shaderCallback: (Rect bounds) {
-              return LinearGradient(colors: [
-                primaryP.shade400,
-                secondaryP.shade400,
-              ]).createShader(
-                Rect.fromLTWH(
-                  0,
-                  0,
-                  bounds.width,
-                  bounds.height,
-                ),
-              );
+              return getAppColorFromStorage().backgroundGradient.createShader(
+                    Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+                  );
             },
             child: Text(
               'FreedomLand',

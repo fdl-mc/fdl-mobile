@@ -29,7 +29,7 @@ class PaymentController extends GetxController {
       amountController.value.text,
     );
 
-    if (payee.length < 3) {
+    if (payee.length < 3 || payee == userController.state?.name) {
       showErrorSnackbar(
         title: 'Ошибка',
         text: 'Введите корректное имя пользователя',

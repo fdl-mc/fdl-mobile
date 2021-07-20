@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class GradientAppBar extends StatelessWidget with PreferredSizeWidget {
   final Gradient gradient;
@@ -18,6 +19,7 @@ class GradientAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       centerTitle: centerTitle,
       title: title,
+      backwardsCompatibility: false,
       flexibleSpace: Container(
         decoration: BoxDecoration(gradient: gradient),
       ),

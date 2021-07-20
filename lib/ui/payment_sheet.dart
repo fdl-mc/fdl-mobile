@@ -4,6 +4,7 @@ import 'package:freedomland/constants/pallettes.dart';
 import 'package:freedomland/controller/payement_controller.dart';
 import 'package:freedomland/ui/general/bottom_sheet_page.dart';
 import 'package:freedomland/ui/general/gradient_button.dart';
+import 'package:freedomland/utils/app_color.dart';
 import 'package:get/get.dart';
 
 class PaymentSheet extends GetView<PaymentController> {
@@ -60,6 +61,7 @@ class PaymentSheet extends GetView<PaymentController> {
                   decoration: InputDecoration(
                     prefixIcon: Icon(
                       Icons.person_outline_outlined,
+                      color: Colors.black45,
                     ),
                     labelText: 'Получатель',
                   ),
@@ -71,20 +73,21 @@ class PaymentSheet extends GetView<PaymentController> {
                   controller: controller.amountController,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.paid_outlined),
+                    prefixIcon: Icon(
+                      Icons.paid_outlined,
+                      color: Colors.black45,
+                    ),
                     labelText: 'Сумма',
                   ),
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 32)),
                 ConstrainedBox(
                   constraints: BoxConstraints.tightFor(
-                      width: double.infinity, height: 48),
+                    width: double.infinity,
+                    height: 48,
+                  ),
                   child: GradientButton(
-                    gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [primaryP.shade800, primaryP.shade400],
-                    ),
+                    gradient: getAppColorFromStorage().primaryGradient,
                     onPressed: controller.fetching ? null : controller.pay,
                     child: controller.fetching
                         ? Padding(
