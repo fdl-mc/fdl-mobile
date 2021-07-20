@@ -99,14 +99,14 @@ List<AppColor> appColors = [
         Color(0xFF26D0CE),
       ],
     ),
-    primaryColor: Color(0xFF3348BE),
+    primaryColor: Color(0xFF344EE4),
     secondaryColor: Color(0xFF26D0CE),
     primaryGradient: LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: <Color>[
-        Color(0xFF3348BE),
-        Color(0xFF556CEE),
+        Color(0xFF2A3EAD),
+        Color(0xFF309FC0),
       ],
     ),
     secondaryGradient: LinearGradient(
