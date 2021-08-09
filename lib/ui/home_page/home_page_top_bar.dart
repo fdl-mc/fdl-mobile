@@ -156,11 +156,17 @@ class HomePageTopBar extends StatelessWidget {
       IconData icon, String title, void Function() onPressed) {
     return Column(
       children: [
-        MaterialButton(
+        ElevatedButton(
           onPressed: onPressed,
-          elevation: 8,
-          shape: CircleBorder(),
-          color: Colors.white,
+          style: ElevatedButton.styleFrom(
+            shape: CircleBorder(),
+            primary: Colors.white,
+            // onSurface: Colors.black,
+            onPrimary: Colors.black,
+            elevation: 16,
+          ),
+          // elevation: 8,
+          // color: Colors.white,
           child: Padding(
             padding: EdgeInsets.all(16.0),
             child: Icon(
