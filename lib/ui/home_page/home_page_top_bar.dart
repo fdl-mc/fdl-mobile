@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:freedomland/constants/enums.dart';
-import 'package:freedomland/constants/home_gradients.dart';
-import 'package:freedomland/constants/pallettes.dart';
 import 'package:freedomland/controller/bindings/settings_binding.dart';
 import 'package:freedomland/controller/payement_controller.dart';
 import 'package:freedomland/model/user_model.dart';

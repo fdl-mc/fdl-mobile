@@ -7,9 +7,6 @@ import 'package:freedomland/ui/splash_screen.dart';
 import 'package:freedomland/utils/app_color.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-// import 'package:responsive_framework/responsive_framework.dart';
-
-import 'constants/pallettes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:freedomland/constants/pallettes.dart';
 import 'package:freedomland/controller/payement_controller.dart';
 import 'package:freedomland/ui/general/bottom_sheet_page.dart';
 import 'package:freedomland/ui/general/gradient_button.dart';

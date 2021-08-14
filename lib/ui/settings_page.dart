@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:freedomland/constants/pallettes.dart';
 import 'package:freedomland/controller/auth_controller.dart';
 import 'package:freedomland/controller/password_change_controller.dart';
 import 'package:freedomland/ui/general/gradient_app_bar.dart';
