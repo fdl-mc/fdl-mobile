@@ -23,6 +23,8 @@ dependencies:
     responsive_framework: ^0.1.4
     get_storage: ^2.0.2
     flutter_phoenix: ^1.0.0
+    riverpod: ^0.14.0+3
+    flutter_riverpod: ^0.14.0+3
 
 dev_dependencies:
     flutter_test:
