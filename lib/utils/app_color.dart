@@ -21,7 +21,7 @@ class AppColor {
 }
 
 AppColor getAppColorFromStorage() {
-  return appColors[StorageService().read(
+  return appColors[storageService.read(
     'gradientIndex',
     defaultValue: 0,
   )];

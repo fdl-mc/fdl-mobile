@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 class HomePage extends StatelessWidget {
   final userController = Get.find<UserController>();
   final homeController = Get.find<HomeController>();
-  final storage = Get.find<StorageService>();
 
   @override
   Widget build(BuildContext context) {

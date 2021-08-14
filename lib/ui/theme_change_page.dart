@@ -30,7 +30,7 @@ class ThemeChangePage extends StatelessWidget {
               ),
               child: GradientButton(
                 onPressed: () {
-                  Get.find<StorageService>().write('gradientIndex', index);
+                  storageService.write('gradientIndex', index);
                   Phoenix.rebirth(context);
                 },
                 gradient: appColors[index].backgroundGradient,
