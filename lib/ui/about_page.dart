@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:freedomland/ui/general/gradient_app_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../constants/pallettes.dart';
-
 class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,7 +12,10 @@ class AboutPage extends StatelessWidget {
         gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: <Color>[primaryP.shade800, primaryP.shade500]),
+            colors: <Color>[
+              Color(0xFF1F60D8),
+              Color(0xFF0093FF),
+            ]),
       ),
       body: Center(
         child: Column(

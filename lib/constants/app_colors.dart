@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:freedomland/constants/pallettes.dart';
 import 'package:freedomland/utils/app_color.dart';
 
 List<AppColor> appColors = [
@@ -8,26 +7,26 @@ List<AppColor> appColors = [
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: [
-        secondaryP.shade400,
-        primaryP.shade400,
+        Color(0xFF8FD34D),
+        Color(0xFF31A3FF),
       ],
     ),
-    primaryColor: primaryP.shade400,
-    secondaryColor: secondaryP.shade400,
+    primaryColor: Color(0xFF31A3FF),
+    secondaryColor: Color(0xFF8FD34D),
     primaryGradient: LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
       colors: <Color>[
-        primaryP.shade800,
-        primaryP.shade500,
+        Color(0xFF1F60D8),
+        Color(0xFF0093FF),
       ],
     ),
     secondaryGradient: LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
       colors: <Color>[
-        secondaryP.shade800,
-        secondaryP.shade500,
+        Color(0xFF3D9200),
+        Color(0xFF7ACA25),
       ],
     ),
     name: 'FreedomLand',

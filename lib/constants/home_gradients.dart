@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:freedomland/constants/pallettes.dart';
 
 List<Gradient> gradients = [
   LinearGradient(
-    begin: Alignment.topLeft, end: Alignment.bottomRight,
-    // [secondaryP.shade400, primaryP.shade400]
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
     colors: [
-      secondaryP.shade400,
-      primaryP.shade400,
+      Color(0xFF8FD34D),
+      Color(0xFF31A3FF),
     ],
   ),
   LinearGradient(
-    begin: Alignment.topLeft, end: Alignment.bottomRight,
-    // [secondaryP.shade400, primaryP.shade400]
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
     colors: [
       Color(0xFF654ea3),
       Color(0xFFeaafc8),
