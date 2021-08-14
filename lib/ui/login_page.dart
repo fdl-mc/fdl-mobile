@@ -4,8 +4,8 @@ import 'package:freedomland/ui/general/bottom_margin.dart';
 import 'package:get/state_manager.dart';
 
 class LoginPage extends GetView<AuthController> {
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
