@@ -7,6 +7,7 @@ import 'package:freedomland/utils/app_color.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
+// TODO: rewrite to riverpod
 class PasswordChangePage extends GetView<PasswordChangeController> {
   @override
   Widget build(BuildContext context) {

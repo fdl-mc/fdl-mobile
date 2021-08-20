@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freedomland/controller/bindings/home_binding.dart';
 import 'package:freedomland/ui/home_page/home_page.dart';
-import 'package:freedomland/ui/login_page.dart';
+import 'package:freedomland/features/auth/pages/login_page.dart';
 import 'package:freedomland/utils/snackbars.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +16,7 @@ class AuthController extends GetxService {
     _firebaseUser.bindStream(_auth.authStateChanges());
     // Get.testMode = true;
 
-    _auth.authStateChanges().listen(_handleAuthChange);
+    // _auth.authStateChanges().listen(_handleAuthChange);
   }
 
   Future<void> login(String username, String password) async {

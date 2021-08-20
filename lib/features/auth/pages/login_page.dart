@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:freedomland/controller/auth_controller.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freedomland/features/auth/utils/providers.dart';
 import 'package:freedomland/ui/general/bottom_margin.dart';
-import 'package:get/state_manager.dart';
 
-class LoginPage extends GetView<AuthController> {
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
+class LoginPage extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, watch) {
+    final authService = context.read(authServiceProvider);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -18,20 +17,26 @@ class LoginPage extends GetView<AuthController> {
           children: [
             TextFormField(
               decoration: InputDecoration(labelText: 'Никнейм'),
-              controller: usernameController,
+              // controller: usernameController,
+              onChanged: (value) {
+                context.read(usernameTextStateProvider).state = value;
+              },
             ),
             BottomMargin(8),
             TextFormField(
               obscureText: true,
               decoration: InputDecoration(labelText: 'Пароль'),
-              controller: passwordController,
+              // controller: passwordController,
+              onChanged: (value) {
+                context.read(passwordTextStateProvider).state = value;
+              },
             ),
             BottomMargin(8),
             ElevatedButton(
               onPressed: () {
-                controller.login(
-                  usernameController.text,
-                  passwordController.text,
+                authService.login(
+                  context.read(usernameTextStateProvider).state,
+                  context.read(passwordTextStateProvider).state,
                 );
               },
               child: Padding(

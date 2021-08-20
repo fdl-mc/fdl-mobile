@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:freedomland/controller/auth_controller.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freedomland/controller/password_change_controller.dart';
+import 'package:freedomland/features/auth/utils/providers.dart';
 import 'package:freedomland/ui/general/gradient_app_bar.dart';
 import 'package:freedomland/ui/password_change_page.dart';
 import 'package:freedomland/ui/theme_change_page.dart';
 import 'package:freedomland/utils/app_color.dart';
 import 'package:get/get.dart';
 
-class SettingsPage extends StatelessWidget {
-  final authController = Get.find<AuthController>();
-
+class SettingsPage extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, watch) {
+    final auth = context.read(authServiceProvider);
+
     return Scaffold(
       appBar: GradientAppBar(
         centerTitle: true,
@@ -55,7 +56,7 @@ class SettingsPage extends StatelessWidget {
                 child: Icon(Icons.logout_outlined),
                 padding: EdgeInsets.all(8),
               ),
-              onTap: authController.logout,
+              onTap: auth.logout,
             ),
           ],
         ).toList(),

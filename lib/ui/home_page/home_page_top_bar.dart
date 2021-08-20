@@ -61,10 +61,15 @@ class HomePageTopBar extends StatelessWidget {
                     onSelected: (SelectedSection ss) {
                       switch (ss) {
                         case SelectedSection.settings:
-                          Get.to(
-                            () => SettingsPage(),
-                            binding: SettingsBinding(),
+                          SettingsBinding().dependencies();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => SettingsPage()),
                           );
+                          // Get.to(
+                          //   () => SettingsPage(),
+                          //   binding: SettingsBinding(),
+                          // );
                           break;
                         case SelectedSection.about:
                           // Get.to(() => AboutPage());
