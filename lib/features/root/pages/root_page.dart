@@ -33,7 +33,7 @@ class RootPage extends ConsumerWidget {
               HomeBinding().dependencies();
 
               // TODO: remove this
-              showSnackbar(SnackBar(content: Text('logged in!')));
+              showSnackbar(context, SnackBar(content: Text('logged in!')));
 
               return HomePage();
             }
