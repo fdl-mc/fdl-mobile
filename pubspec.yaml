@@ -27,3 +27,7 @@ dev_dependencies:
 
 flutter:
     uses-material-design: true
+    fonts:
+        - family: CustomIcons
+          fonts:
+              - asset: assets/fonts/CustomIcons.ttf
