@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dev.arslee.freedomland">
+    package="com.example.fdl_app">
    <application
-        android:label="FreedomLand"
-        android:icon="@mipmap/launcher_icon">
+        android:label="fdl_app"
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
