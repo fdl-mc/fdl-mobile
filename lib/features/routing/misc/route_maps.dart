@@ -1,5 +1,6 @@
 import 'package:fdl_app/features/auth/pages/login_page.dart';
 import 'package:fdl_app/features/home/pages/home_page.dart';
+import 'package:fdl_app/shared/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';
 
@@ -22,7 +23,7 @@ final loadingMap = RouteMap(
   onUnknownRoute: (route) => const MaterialPage(
     child: Scaffold(
       body: Center(
-        child: CircularProgressIndicator(),
+        child: Icon(CustomIcons.fdl_icon, size: 64),
         key: ValueKey('loading'),
       ),
     ),

@@ -1,11 +1,14 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:fdl_app/features/routing/misc/providers.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:routemaster/routemaster.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Routemaster.setPathUrlStrategy();
+  await Firebase.initializeApp();
   runApp(const ProviderScope(child: App()));
 }
 
@@ -21,7 +24,7 @@ class App extends ConsumerWidget {
       ),
       dark: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.grey,
       ),
       initial: AdaptiveThemeMode.system,
       builder: (theme, darkTheme) {

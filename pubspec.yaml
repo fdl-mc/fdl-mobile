@@ -18,6 +18,9 @@ dependencies:
     routemaster: ^0.9.5
     firebase_core: ^1.8.0
     firebase_auth: ^3.1.4
+    fdl_api:
+        git:
+            url: git://github.com/fdl-mc/fdl-api-dart.git
 
 dev_dependencies:
     flutter_test:

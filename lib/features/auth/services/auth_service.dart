@@ -7,8 +7,7 @@ class AuthService {
 
   Future<void> signInWithEmailAndPassword(String email, String password) => _ref
       .read(firebaseAuthProvider)
-      .signInWithEmailAndPassword(email: email, password: password)
-      .then((value) => print('bruh'));
+      .signInWithEmailAndPassword(email: email, password: password);
 
   Future<void> signOut() => _ref.read(firebaseAuthProvider).signOut();
 }
