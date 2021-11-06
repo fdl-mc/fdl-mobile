@@ -1,14 +1,10 @@
 import 'package:fdl_app/features/auth/misc/providers.dart';
 import 'package:fdl_app/shared/custom_icons.dart';
-import 'package:fdl_app/shared/widgets/spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
-
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,32 +29,15 @@ class LoginPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextField(
-                    decoration: const InputDecoration(labelText: 'Username'),
-                    controller: _usernameController,
-                  ),
-                  const Space(24),
-                  TextField(
-                    decoration: const InputDecoration(labelText: 'Password'),
-                    keyboardType: TextInputType.visiblePassword,
-                    controller: _passwordController,
-                    obscureText: true,
-                  ),
-                  const Space(32),
                   SizedBox(
                     width: double.maxFinite,
                     child: ElevatedButton(
                       onPressed: () {
-                        context
-                            .read(authServiceProvider)
-                            .signInWithEmailAndPassword(
-                              _usernameController.text + '@fdl.ru',
-                              _passwordController.text,
-                            );
+                        context.read(authServiceProvider).signInWithDiscord();
                       },
                       child: const Padding(
                         padding: EdgeInsets.all(16.0),
-                        child: Text('Login'),
+                        child: Text('Login with Discord'),
                       ),
                     ),
                   ),
