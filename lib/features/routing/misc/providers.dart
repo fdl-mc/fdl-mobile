@@ -7,12 +7,11 @@ import 'package:routemaster/routemaster.dart';
 final routerDelegateProvider = Provider(
   (ref) => RoutemasterDelegate(
     routesBuilder: (BuildContext context) {
-      return ref.watch(authStateProvider).data?.when(
-                data: (user) => user == null ? loggedOutMap : loggedInMap,
-                loading: () => loadingMap,
-                error: (_, __) => loggedOutMap,
-              ) ??
-          loadingMap;
+      return ref.watch(authStateProvider).when(
+            data: (user) => user == null ? loggedOutMap : loggedInMap,
+            loading: () => loadingMap,
+            error: (_, __) => loggedOutMap,
+          );
     },
   ),
 );

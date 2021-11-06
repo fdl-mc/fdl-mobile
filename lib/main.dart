@@ -20,7 +20,7 @@ class App extends ConsumerWidget {
     return AdaptiveTheme(
       light: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.indigo,
       ),
       dark: ThemeData(
         brightness: Brightness.dark,
@@ -34,6 +34,7 @@ class App extends ConsumerWidget {
           darkTheme: darkTheme,
           routeInformationParser: context.read(routerParserProvider),
           routerDelegate: watch(routerDelegateProvider),
+          debugShowCheckedModeBanner: false,
         );
       },
     );
