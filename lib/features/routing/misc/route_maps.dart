@@ -1,5 +1,6 @@
 import 'package:fdl_app/features/auth/pages/login_page.dart';
 import 'package:fdl_app/features/home/pages/home_page.dart';
+import 'package:fdl_app/features/payment/pages/payment_form_page.dart';
 import 'package:fdl_app/shared/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';
@@ -16,6 +17,8 @@ final loggedInMap = RouteMap(
   onUnknownRoute: (route) => const Redirect('/'),
   routes: {
     '/': (_) => const MaterialPage(child: HomePage(), key: ValueKey('home')),
+    '/pay': (_) =>
+        const MaterialPage(child: PaymentFormPage(), key: ValueKey('payment')),
   },
 );
 

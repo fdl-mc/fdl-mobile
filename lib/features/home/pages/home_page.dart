@@ -2,6 +2,7 @@ import 'package:fdl_app/features/home/misc/providers.dart';
 import 'package:fdl_app/shared/widgets/spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:routemaster/routemaster.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -66,7 +67,7 @@ class HomePage extends ConsumerWidget {
                     ),
                     const Space(24),
                     Text(
-                      '${user.balance} P\$',
+                      '${user.balance} PF',
                       style: TextStyle(
                         fontSize: 36,
                         color: _computeColor(context),
@@ -75,10 +76,11 @@ class HomePage extends ConsumerWidget {
                     const Space(36),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        _ActionButton(Icons.call_received, 'Deposit'),
-                        _ActionButton(Icons.call_made, 'Withdraw'),
-                        _ActionButton(Icons.payment, 'Payment'),
+                      children: [
+                        _ActionButton(Icons.call_received, 'Deposit', () {}),
+                        _ActionButton(Icons.call_made, 'Withdraw', () {}),
+                        _ActionButton(Icons.payment, 'Payment',
+                            () => Routemaster.of(context).push('/pay')),
                       ],
                     )
                   ],
@@ -105,19 +107,21 @@ class HomePage extends ConsumerWidget {
 class _ActionButton extends StatelessWidget {
   final IconData icon;
   final String text;
-  const _ActionButton(this.icon, this.text, {Key? key}) : super(key: key);
+  final void Function() onPressed;
+  const _ActionButton(this.icon, this.text, this.onPressed, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ElevatedButton(
-          onPressed: () {},
+          onPressed: onPressed,
           child: Icon(icon, color: _computeColor(context)),
           style: ElevatedButton.styleFrom(
             primary: const Color.fromARGB(48, 255, 255, 255),
             shape: const CircleBorder(),
-            padding: const EdgeInsets.all(26),
+            padding: const EdgeInsets.all(18),
             shadowColor: Colors.transparent,
           ),
         ),
