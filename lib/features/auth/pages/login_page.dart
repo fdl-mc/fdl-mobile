@@ -37,14 +37,14 @@ class LoginPage extends StatelessWidget {
                     decoration: const InputDecoration(labelText: 'Username'),
                     controller: _usernameController,
                   ),
-                  const Space(24),
+                  const BSpacer(24),
                   TextField(
                     decoration: const InputDecoration(labelText: 'Password'),
                     keyboardType: TextInputType.visiblePassword,
                     controller: _passwordController,
                     obscureText: true,
                   ),
-                  const Space(32),
+                  const BSpacer(32),
                   SizedBox(
                     width: double.maxFinite,
                     child: ElevatedButton(

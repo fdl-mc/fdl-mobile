@@ -1,3 +1,4 @@
+import 'package:fdl_app/features/auth/misc/providers.dart';
 import 'package:fdl_app/features/home/misc/providers.dart';
 import 'package:fdl_app/shared/widgets/spacer.dart';
 import 'package:flutter/material.dart';
@@ -13,83 +14,100 @@ class HomePage extends ConsumerWidget {
     final controller = watch(homeControllerProvider);
 
     return controller.when(
-      data: (user) => Scaffold(
-        body: ListView(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                boxShadow: kElevationToShadow[4],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 16,
-                  bottom: 32,
-                  left: 16,
-                  right: 16,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
+      data: (user) {
+        return Scaffold(
+          body: SafeArea(
+            child: ListView(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    boxShadow: kElevationToShadow[4],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 16,
+                      bottom: 32,
+                      left: 16,
+                      right: 16,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(6.0),
-                            child: Image.network(
-                              'https://minotar.net/helm/${user.nickname}.png',
-                              width: 28,
-                              height: 28,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          user.nickname,
-                          style: TextStyle(
-                              fontSize: 18, color: _computeColor(context)
-                              // color: Colors.white,
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                final id =
+                                    context.read(currentUserProvider)!.uid;
+                                Routemaster.of(context).push('/profile/$id');
+                              },
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(6.0),
+                                      child: Image.network(
+                                        'https://minotar.net/helm/${user.nickname}.png',
+                                        width: 28,
+                                        height: 28,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    user.nickname,
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        color: _computeColor(context)
+                                        // color: Colors.white,
+                                        ),
+                                  ),
+                                ],
                               ),
+                            ),
+                            const Spacer(),
+                            PopupMenuButton(
+                              icon: Icon(
+                                Icons.more_vert,
+                                color: _computeColor(context),
+                              ),
+                              iconSize: 28,
+                              onSelected: (s) {},
+                              itemBuilder: (context) => [],
+                            ),
+                          ],
                         ),
-                        const Spacer(),
-                        PopupMenuButton(
-                          icon: Icon(
-                            Icons.more_vert,
+                        const BSpacer(24),
+                        Text(
+                          '${user.balance} PF',
+                          style: TextStyle(
+                            fontSize: 36,
                             color: _computeColor(context),
                           ),
-                          iconSize: 28,
-                          onSelected: (s) {},
-                          itemBuilder: (context) => [],
                         ),
+                        const BSpacer(36),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            _ActionButton(
+                                Icons.call_received, 'Deposit', () {}),
+                            _ActionButton(Icons.call_made, 'Withdraw', () {}),
+                            _ActionButton(Icons.payment, 'Payment',
+                                () => Routemaster.of(context).push('/pay')),
+                          ],
+                        )
                       ],
                     ),
-                    const Space(24),
-                    Text(
-                      '${user.balance} PF',
-                      style: TextStyle(
-                        fontSize: 36,
-                        color: _computeColor(context),
-                      ),
-                    ),
-                    const Space(36),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _ActionButton(Icons.call_received, 'Deposit', () {}),
-                        _ActionButton(Icons.call_made, 'Withdraw', () {}),
-                        _ActionButton(Icons.payment, 'Payment',
-                            () => Routemaster.of(context).push('/pay')),
-                      ],
-                    )
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
       loading: () => const Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
@@ -125,7 +143,7 @@ class _ActionButton extends StatelessWidget {
             shadowColor: Colors.transparent,
           ),
         ),
-        const Space(10),
+        const BSpacer(10),
         Text(
           text,
           style: TextStyle(color: _computeColor(context)),
