@@ -1,6 +1,6 @@
 {
-    "name": "fdl_app",
-    "short_name": "fdl_app",
+    "name": "FreedomLand",
+    "short_name": "FreedomLand",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

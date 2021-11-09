@@ -43,7 +43,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "dev.arslee.fdl_app"
+        applicationId "ru.fdl-mc"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
