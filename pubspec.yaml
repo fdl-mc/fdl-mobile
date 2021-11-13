@@ -21,6 +21,7 @@ dependencies:
     fdl_api:
         git:
             url: git://github.com/fdl-mc/fdl-api-dart.git
+    dropdown_search: ^2.0.0
 
 dev_dependencies:
     flutter_test:

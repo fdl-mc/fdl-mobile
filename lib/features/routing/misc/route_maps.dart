@@ -27,9 +27,9 @@ final loggedInMap = RouteMap(
           child: HomePage(),
           key: ValueKey('home'),
         ),
-    '/pay': (_) => const MaterialPage(
+    '/pay': (_) => MaterialPage(
           child: PaymentFormPage(),
-          key: ValueKey('payment'),
+          key: const ValueKey('payment'),
         ),
     '/profile/:id': (_) => MaterialPage(
           child: ProfilePage(_.pathParameters['id']!),
