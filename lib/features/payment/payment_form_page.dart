@@ -12,7 +12,7 @@ class PaymentFormPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, watch) {
-    final controller = watch(paymentPageControllerProvider.notifier);
+    final controller = watch(paymentPageControllerProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -81,6 +81,7 @@ class PaymentFormPage extends ConsumerWidget {
                     prefixIcon: Icon(Icons.comment),
                     label: Text('Comment (optional)'),
                   ),
+                  onChanged: (value) => controller.comment = value,
                 ),
                 const BSpacer(16),
                 SizedBox(

@@ -22,6 +22,7 @@ class PaymentPageController extends ChangeNotifier {
 
   User? user;
   int? amount;
+  String? comment;
 
   Future<List<User>> findUsers(String? query) async {
     if (query == null) return [];
@@ -32,7 +33,11 @@ class PaymentPageController extends ChangeNotifier {
   Future<void> pay() async {
     await _ref.read(fdlApiProvider).pay(
           await _ref.read(currentUserProvider)!.getIdToken(),
-          TransactionBuilder(amount: amount!, payee: user!.id),
+          TransactionBuilder(
+            amount: amount!,
+            payee: user!.id,
+            comment: comment == null || comment!.isEmpty ? null : comment,
+          ),
         );
   }
 }
