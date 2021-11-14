@@ -103,14 +103,16 @@ class PaymentFormPage extends ConsumerWidget {
                                 if (error is InsuffuicientFundsError) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
-                                        content: Text('Insuffuicient funds.')),
+                                      content: Text('Insuffuicient funds.'),
+                                    ),
                                   );
                                 }
                                 if (error is UserNotFoundError) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
-                                      content:
-                                          Text('User not found. (how lol)'),
+                                      content: Text(
+                                        'User not found. (how lol)',
+                                      ),
                                     ),
                                   );
                                 }

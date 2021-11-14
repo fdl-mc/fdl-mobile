@@ -21,12 +21,18 @@ class App extends ConsumerWidget {
   Widget build(BuildContext context, watch) {
     return AdaptiveTheme(
       light: ThemeData(
-        brightness: Brightness.light,
         primarySwatch: Colors.indigo,
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.indigo,
+          brightness: Brightness.light,
+        ),
       ),
       dark: ThemeData(
-        brightness: Brightness.dark,
         primarySwatch: Colors.grey,
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.grey,
+          brightness: Brightness.dark,
+        ),
       ),
       initial: AdaptiveThemeMode.system,
       builder: (theme, darkTheme) {
