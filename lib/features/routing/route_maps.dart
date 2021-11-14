@@ -1,7 +1,7 @@
-import 'package:fdl_app/features/auth/pages/login_page.dart';
-import 'package:fdl_app/features/home/pages/home_page.dart';
-import 'package:fdl_app/features/payment/pages/payment_form_page.dart';
-import 'package:fdl_app/features/profiles/pages/profile_page.dart';
+import 'package:fdl_app/features/auth/login_page.dart';
+import 'package:fdl_app/features/home/home_page.dart';
+import 'package:fdl_app/features/payment/payment_form_page.dart';
+import 'package:fdl_app/features/profiles/profile_page.dart';
 import 'package:fdl_app/shared/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';

@@ -1,6 +1,6 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:fdl_api/fdl_api.dart';
-import 'package:fdl_app/features/payment/controllers/payment_page_controller.dart';
+import 'package:fdl_app/features/payment/payment_page_controller.dart';
 import 'package:fdl_app/shared/widgets/spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +12,7 @@ class PaymentFormPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, watch) {
-    final controller = watch(paymentPageControllerProvider);
+    final controller = watch(paymentPageControllerProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(

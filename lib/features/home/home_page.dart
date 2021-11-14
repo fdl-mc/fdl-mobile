@@ -1,5 +1,5 @@
-import 'package:fdl_app/features/auth/misc/providers.dart';
-import 'package:fdl_app/features/home/misc/providers.dart';
+import 'package:fdl_app/features/auth/providers.dart';
+import 'package:fdl_app/features/home/providers.dart';
 import 'package:fdl_app/shared/widgets/spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,10 +10,9 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, watch) {
-    // ignore: invalid_use_of_protected_member
     final controller = watch(homeControllerProvider);
 
-    return controller.when(
+    return controller.user.when(
       data: (user) {
         return Scaffold(
           body: SafeArea(

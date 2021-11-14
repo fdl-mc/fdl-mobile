@@ -1,4 +1,4 @@
-import 'package:fdl_app/features/auth/services/auth_service.dart';
+import 'package:fdl_app/features/auth/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,6 +18,6 @@ final currentUserProvider = Provider<User?>(
 );
 
 /// Provides auth service
-final authServiceProvider = Provider<AuthService>(
-  (ref) => AuthService(ref),
+final authServiceProvider = Provider<AuthController>(
+  (ref) => AuthController(ref),
 );

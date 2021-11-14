@@ -1,6 +1,6 @@
 import 'package:fdl_api/fdl_api.dart';
-import 'package:fdl_app/features/auth/misc/providers.dart';
-import 'package:fdl_app/features/profiles/misc/providers.dart';
+import 'package:fdl_app/features/auth/providers.dart';
+import 'package:fdl_app/features/profiles/providers.dart';
 import 'package:fdl_app/shared/config.dart';
 import 'package:fdl_app/shared/widgets/spacer.dart';
 import 'package:flutter/material.dart';

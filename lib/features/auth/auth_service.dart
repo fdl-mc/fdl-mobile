@@ -1,8 +1,8 @@
-import 'package:fdl_app/features/auth/misc/providers.dart';
+import 'package:fdl_app/features/auth/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AuthService {
-  AuthService(this._ref);
+class AuthController {
+  AuthController(this._ref);
   final ProviderReference _ref;
 
   Future<void> signInWithEmailAndPassword(String email, String password) => _ref

@@ -1,4 +1,4 @@
-import 'package:fdl_app/features/auth/misc/providers.dart';
+import 'package:fdl_app/features/auth/providers.dart';
 import 'package:fdl_app/shared/custom_icons.dart';
 import 'package:fdl_app/shared/widgets/spacer.dart';
 import 'package:flutter/material.dart';
