@@ -7,38 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1033331090177:android:ac69d609f1858d4ccfb100",
+        "mobilesdk_app_id": "1:1033331090177:android:590db655840bcd43cfb100",
         "android_client_info": {
-          "package_name": "dev.arslee.fdl_app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1033331090177-dg9lu335iad1cio2qgsqdvlvmo9rqeqq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCWu1_ME479FV4BRcty2YAsTqnRPF3rTjg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1033331090177-dg9lu335iad1cio2qgsqdvlvmo9rqeqq.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:1033331090177:android:3aa8f662babfdb97cfb100",
-        "android_client_info": {
-          "package_name": "dev.arslee.freedomland"
+          "package_name": "ru.fdl_mc"
         }
       },
       "oauth_client": [
