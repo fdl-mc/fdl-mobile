@@ -21,7 +21,6 @@ class HomeController extends ChangeNotifier {
     } catch (err, stack) {
       user = AsyncValue.error(err, stack);
     }
-    print(user.data?.value);
     notifyListeners();
   }
 }
