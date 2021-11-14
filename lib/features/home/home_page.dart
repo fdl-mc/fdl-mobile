@@ -1,3 +1,4 @@
+import 'package:fdl_api/fdl_api.dart';
 import 'package:fdl_app/features/auth/providers.dart';
 import 'package:fdl_app/features/home/providers.dart';
 import 'package:fdl_app/shared/widgets/spacer.dart';
@@ -16,93 +17,11 @@ class HomePage extends ConsumerWidget {
       data: (user) {
         return Scaffold(
           body: SafeArea(
-            child: ListView(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    boxShadow: kElevationToShadow[4],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 16,
-                      bottom: 32,
-                      left: 16,
-                      right: 16,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                final id =
-                                    context.read(currentUserProvider)!.uid;
-                                Routemaster.of(context).push('/profile/$id');
-                              },
-                              child: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 10),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(6.0),
-                                      child: Image.network(
-                                        'https://minotar.net/helm/${user.nickname}.png',
-                                        width: 28,
-                                        height: 28,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    user.nickname,
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        color: _computeColor(context)
-                                        // color: Colors.white,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const Spacer(),
-                            PopupMenuButton(
-                              icon: Icon(
-                                Icons.more_vert,
-                                color: _computeColor(context),
-                              ),
-                              iconSize: 28,
-                              onSelected: (s) {},
-                              itemBuilder: (context) => [],
-                            ),
-                          ],
-                        ),
-                        const BSpacer(24),
-                        Text(
-                          '${user.balance} PF',
-                          style: TextStyle(
-                            fontSize: 36,
-                            color: _computeColor(context),
-                          ),
-                        ),
-                        const BSpacer(36),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            _ActionButton(
-                                Icons.call_received, 'Deposit', () {}),
-                            _ActionButton(Icons.call_made, 'Withdraw', () {}),
-                            _ActionButton(Icons.payment, 'Payment',
-                                () => Routemaster.of(context).push('/pay')),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            child: RefreshIndicator(
+              onRefresh: controller.refresh,
+              child: ListView(
+                children: [_Header(user)],
+              ),
             ),
           ),
         );
@@ -115,6 +34,107 @@ class HomePage extends ConsumerWidget {
       error: (err, trace) => Scaffold(
         body: Center(
           child: Text('Ошибка: $err'),
+        ),
+      ),
+    );
+  }
+}
+
+class _Header extends StatelessWidget {
+  final User user;
+  const _Header(this.user, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        boxShadow: kElevationToShadow[4],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 16,
+          bottom: 32,
+          left: 16,
+          right: 16,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    final id = context.read(currentUserProvider)!.uid;
+                    Routemaster.of(context).push('/profile/$id');
+                  },
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(6.0),
+                          child: Image.network(
+                            'https://minotar.net/helm/${user.nickname}.png',
+                            width: 28,
+                            height: 28,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        user.nickname,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: _computeColor(context),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Spacer(),
+                PopupMenuButton(
+                  icon: Icon(
+                    Icons.more_vert,
+                    color: _computeColor(context),
+                  ),
+                  iconSize: 28,
+                  onSelected: (s) {},
+                  itemBuilder: (context) => [],
+                ),
+              ],
+            ),
+            const BSpacer(24),
+            Text(
+              '${user.balance} PF',
+              style: TextStyle(
+                fontSize: 36,
+                color: _computeColor(context),
+              ),
+            ),
+            const BSpacer(36),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _ActionButton(
+                  Icons.call_received,
+                  'Deposit',
+                  () {},
+                ),
+                _ActionButton(
+                  Icons.call_made,
+                  'Withdraw',
+                  () {},
+                ),
+                _ActionButton(
+                  Icons.payment,
+                  'Payment',
+                  () => Routemaster.of(context).push('/pay'),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );

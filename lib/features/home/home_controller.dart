@@ -23,4 +23,15 @@ class HomeController extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  Future<void> refresh() async {
+    try {
+      user = AsyncValue.data(await _ref
+          .read(fdlApiProvider)
+          .getUser(_ref.read(currentUserProvider)!.uid));
+    } catch (err, stack) {
+      user = AsyncValue.error(err, stack);
+    }
+    notifyListeners();
+  }
 }
