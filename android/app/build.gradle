@@ -43,7 +43,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "ru.fdl-mc"
+        applicationId "ru.fdl_mc"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
