@@ -23,7 +23,7 @@ class PaymentFormPage extends ConsumerWidget {
           padding: const EdgeInsets.all(12.0),
           child: Form(
             key: _formKey,
-            child: Column(
+            child: ListView(
               children: [
                 DropdownSearch<User>(
                   isFilteredOnline: true,
