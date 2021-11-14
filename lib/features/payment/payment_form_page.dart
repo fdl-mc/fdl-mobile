@@ -94,7 +94,9 @@ class PaymentFormPage extends ConsumerWidget {
                               controller.isLoading = true;
                               controller.pay().then((_) {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(content: Text('pog')),
+                                  const SnackBar(
+                                    content: Text('Successful transaction.'),
+                                  ),
                                 );
                                 _formKey.currentState!.reset();
                               }).catchError((error, _) {
