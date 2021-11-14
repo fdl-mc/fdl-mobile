@@ -1,73 +1,44 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:fdl_app/features/routing/providers.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:freedomland/controller/bindings/initial_binding.dart';
-import 'package:freedomland/ui/splash_screen.dart';
-import 'package:freedomland/utils/app_color.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:routemaster/routemaster.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  Routemaster.setPathUrlStrategy();
   await Firebase.initializeApp();
-  await GetStorage.init();
-
-  SystemChrome.setPreferredOrientations(
-    [
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ],
-  ).then((_) {
-    runApp(Phoenix(child: App()));
-  });
+  await Settings.init();
+  runApp(const ProviderScope(child: App()));
 }
 
-class App extends StatelessWidget {
+class App extends ConsumerWidget {
+  const App({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    final appColor = getAppColorFromStorage();
-    return GetMaterialApp(
-      defaultTransition: Transition.cupertino,
-      initialBinding: InitialBinding(),
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle.light,
-          brightness: Brightness.dark,
-          foregroundColor: Colors.white,
-        ),
-        primaryColor: appColor.primaryColor,
-        accentColor: appColor.secondaryColor,
-        textSelectionTheme: TextSelectionThemeData(
-          cursorColor: appColor.primaryColor,
-          selectionColor: appColor.primaryColor.withAlpha(64),
-          selectionHandleColor: appColor.primaryColor,
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(appColor.primaryColor),
-          ),
-        ),
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: appColor.primaryColor),
-          ),
-          labelStyle: TextStyle(color: Colors.black54),
-          focusColor: appColor.primaryColor,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: Colors.black26),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-        ),
-        fontFamily: 'Montserrat',
+  Widget build(BuildContext context, watch) {
+    return AdaptiveTheme(
+      light: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.indigo,
       ),
-      home: SplashScreen(),
+      dark: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.grey,
+      ),
+      initial: AdaptiveThemeMode.system,
+      builder: (theme, darkTheme) {
+        return MaterialApp.router(
+          title: 'FreedomLand',
+          theme: theme,
+          darkTheme: darkTheme,
+          routeInformationParser: context.read(routerParserProvider),
+          routerDelegate: watch(routerDelegateProvider),
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }

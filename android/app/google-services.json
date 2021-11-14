@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1033331090177:android:3aa8f662babfdb97cfb100",
+        "mobilesdk_app_id": "1:1033331090177:android:590db655840bcd43cfb100",
         "android_client_info": {
-          "package_name": "dev.arslee.freedomland"
+          "package_name": "ru.fdl_mc"
         }
       },
       "oauth_client": [
