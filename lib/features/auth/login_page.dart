@@ -54,7 +54,24 @@ class LoginPage extends StatelessWidget {
                             .signInWithEmailAndPassword(
                               _usernameController.text + '@fdl.ru',
                               _passwordController.text,
+                            )
+                            .catchError((e) {
+                          if (e.code == 'wrong-password' ||
+                              e.code == 'user-not-found') {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Wrong username or password.'),
+                              ),
                             );
+                          }
+                          if (e.code == 'user-disabled') {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('This account is disabled.'),
+                              ),
+                            );
+                          }
+                        });
                       },
                       child: const Padding(
                         padding: EdgeInsets.all(16.0),

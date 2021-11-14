@@ -22,6 +22,8 @@ dependencies:
         git:
             url: git://github.com/fdl-mc/fdl-api-dart.git
     dropdown_search: ^2.0.0
+    flutter_settings_screens: 0.3.2-null-safety
+    url_launcher: ^6.0.12
 
 dev_dependencies:
     flutter_test:

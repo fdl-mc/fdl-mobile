@@ -2,6 +2,7 @@ import 'package:fdl_app/features/auth/login_page.dart';
 import 'package:fdl_app/features/home/home_page.dart';
 import 'package:fdl_app/features/payment/payment_form_page.dart';
 import 'package:fdl_app/features/profiles/profile_page.dart';
+import 'package:fdl_app/features/settings/settings_page.dart';
 import 'package:fdl_app/shared/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';
@@ -34,6 +35,10 @@ final loggedInMap = RouteMap(
     '/profile/:id': (_) => MaterialPage(
           child: ProfilePage(_.pathParameters['id']!),
           key: const ValueKey('profile'),
+        ),
+    '/settings': (_) => const MaterialPage(
+          child: SettignsPage(),
+          key: ValueKey('settings'),
         ),
   },
 );

@@ -3,12 +3,14 @@ import 'package:fdl_app/features/routing/providers.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:routemaster/routemaster.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Routemaster.setPathUrlStrategy();
   await Firebase.initializeApp();
+  await Settings.init();
   runApp(const ProviderScope(child: App()));
 }
 

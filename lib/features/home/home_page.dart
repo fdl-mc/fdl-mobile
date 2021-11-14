@@ -94,14 +94,22 @@ class _Header extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                PopupMenuButton(
+                PopupMenuButton<int>(
                   icon: Icon(
                     Icons.more_vert,
                     color: _computeColor(context),
                   ),
                   iconSize: 28,
-                  onSelected: (s) {},
-                  itemBuilder: (context) => [],
+                  onSelected: (s) {
+                    switch (s) {
+                      case 0:
+                        Routemaster.of(context).push('/settings');
+                        break;
+                    }
+                  },
+                  itemBuilder: (context) => [
+                    const PopupMenuItem(child: Text('Settings'), value: 0),
+                  ],
                 ),
               ],
             ),
