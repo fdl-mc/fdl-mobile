@@ -24,6 +24,7 @@ dependencies:
     dropdown_search: ^2.0.0
     flutter_settings_screens: 0.3.2-null-safety
     url_launcher: ^6.0.12
+    responsive_framework: ^0.1.5
 
 dev_dependencies:
     flutter_test:
