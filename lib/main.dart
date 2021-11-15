@@ -25,6 +25,7 @@ class App extends ConsumerWidget {
         primarySwatch: Colors.indigo,
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.indigo,
+          accentColor: Colors.indigoAccent,
           brightness: Brightness.light,
         ),
       ),
@@ -32,6 +33,7 @@ class App extends ConsumerWidget {
         primarySwatch: Colors.grey,
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.grey,
+          accentColor: Colors.grey,
           brightness: Brightness.dark,
         ),
       ),
@@ -48,7 +50,6 @@ class App extends ConsumerWidget {
             child,
             maxWidth: 1200,
             minWidth: 480,
-            defaultScale: true,
             breakpoints: const [
               ResponsiveBreakpoint.resize(480, name: MOBILE),
               ResponsiveBreakpoint.autoScale(800, name: TABLET),
