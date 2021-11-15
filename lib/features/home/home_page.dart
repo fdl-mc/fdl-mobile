@@ -13,27 +13,24 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, watch) {
     final controller = watch(homeControllerProvider);
 
-    return controller.user.when(
-      data: (user) {
-        return Scaffold(
-          body: SafeArea(
-            child: RefreshIndicator(
-              onRefresh: controller.refresh,
-              child: ListView(
-                children: [_Header(user)],
+    return Scaffold(
+      body: SafeArea(
+        child: RefreshIndicator(
+          onRefresh: controller.refresh,
+          child: controller.user.when(
+            data: (user) => ListView(
+              children: [_Header(user)],
+            ),
+            loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            error: (err, trace) => Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Center(
+                child: Text('Ошибка: $err'),
               ),
             ),
           ),
-        );
-      },
-      loading: () => const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      ),
-      error: (err, trace) => Scaffold(
-        body: Center(
-          child: Text('Ошибка: $err'),
         ),
       ),
     );
