@@ -5,9 +5,8 @@ class AuthController {
   AuthController(this._ref);
   final ProviderReference _ref;
 
-  Future<void> signInWithEmailAndPassword(String email, String password) => _ref
-      .read(firebaseAuthProvider)
-      .signInWithEmailAndPassword(email: email, password: password);
+  Future<void> signIn() =>
+      _ref.read(authServiceProvider).signInWithOauth('discord');
 
-  Future<void> signOut() => _ref.read(firebaseAuthProvider).signOut();
+  Future<void> signOut() => _ref.read(authServiceProvider).signOut();
 }

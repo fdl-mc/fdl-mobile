@@ -114,7 +114,7 @@ class _ProfileCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    if (user.id != context.read(currentUserProvider)?.uid) ...[
+                    if (user.id != context.read(currentUserProvider)?.$id) ...[
                       IconButton(
                         onPressed: () {},
                         icon: const Icon(Icons.payment),

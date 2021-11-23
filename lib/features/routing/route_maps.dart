@@ -10,9 +10,9 @@ import 'package:routemaster/routemaster.dart';
 final loggedOutMap = RouteMap(
   onUnknownRoute: (route) => const Redirect('/login'),
   routes: {
-    '/login': (_) => MaterialPage(
+    '/login': (_) => const MaterialPage(
           child: LoginPage(),
-          key: const ValueKey('login'),
+          key: ValueKey('login'),
         ),
     '/profile/:id': (_) => MaterialPage(
           child: ProfilePage(_.pathParameters['id']!),

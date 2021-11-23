@@ -17,7 +17,7 @@ class HomeController extends ChangeNotifier {
     try {
       user = AsyncValue.data(await _ref
           .read(fdlApiProvider)
-          .getUser(_ref.read(currentUserProvider)!.uid));
+          .getUser(_ref.read(currentUserProvider)!.$id));
     } catch (err, stack) {
       user = AsyncValue.error(err, stack);
     }
@@ -28,7 +28,7 @@ class HomeController extends ChangeNotifier {
     try {
       user = AsyncValue.data(await _ref
           .read(fdlApiProvider)
-          .getUser(_ref.read(currentUserProvider)!.uid));
+          .getUser(_ref.read(currentUserProvider)!.$id));
     } catch (err, stack) {
       user = AsyncValue.error(err, stack);
     }

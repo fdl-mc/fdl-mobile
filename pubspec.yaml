@@ -16,8 +16,6 @@ dependencies:
     adaptive_theme: ^2.3.0
     flutter_riverpod: ^0.14.0+3
     routemaster: ^0.9.5
-    firebase_core: ^1.8.0
-    firebase_auth: ^3.1.4
     fdl_api:
         git:
             url: git://github.com/fdl-mc/fdl-api-dart.git
@@ -25,6 +23,7 @@ dependencies:
     flutter_settings_screens: 0.3.2-null-safety
     url_launcher: ^6.0.12
     responsive_framework: ^0.1.5
+    appwrite: ^2.0.3
 
 dev_dependencies:
     flutter_test:

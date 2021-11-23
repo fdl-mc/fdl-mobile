@@ -1,23 +1,20 @@
-import 'package:fdl_app/features/auth/auth_controller.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:appwrite/appwrite.dart';
+import 'package:fdl_app/features/auth/auth_service.dart';
+import 'package:fdl_app/shared/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// Provides Firebase Auth instance
-final firebaseAuthProvider = Provider<FirebaseAuth>(
-  (ref) => FirebaseAuth.instance,
+final accountProvider = Provider<Account>(
+  (ref) => Account(ref.read(appwriteProvider)),
 );
 
-/// Provides auth state stream
-final authStateProvider = StreamProvider<User?>(
-  (ref) => ref.read(firebaseAuthProvider).authStateChanges(),
+final authServiceProvider = Provider(
+  (ref) => AuthService(ref.read(appwriteProvider)),
 );
 
-/// Provides current user
-final currentUserProvider = Provider<User?>(
-  (ref) => ref.read(firebaseAuthProvider).currentUser,
+final currentUserProvider = Provider(
+  (ref) => ref.read(authServiceProvider).user,
 );
 
-/// Provides auth service
-final authServiceProvider = Provider<AuthController>(
-  (ref) => AuthController(ref),
+final userStateProvider = StreamProvider(
+  (ref) => ref.read(authServiceProvider).state,
 );

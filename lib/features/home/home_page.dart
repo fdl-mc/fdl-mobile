@@ -63,7 +63,7 @@ class _Header extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    final id = context.read(currentUserProvider)!.uid;
+                    final id = context.read(currentUserProvider)!.$id;
                     Routemaster.of(context).push('/profile/$id');
                   },
                   child: Row(

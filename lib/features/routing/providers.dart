@@ -7,7 +7,7 @@ import 'package:routemaster/routemaster.dart';
 final routerDelegateProvider = Provider(
   (ref) => RoutemasterDelegate(
     routesBuilder: (BuildContext context) {
-      return ref.watch(authStateProvider).when(
+      return ref.watch(userStateProvider).when(
             data: (user) => user == null ? loggedOutMap : loggedInMap,
             loading: () => loadingMap,
             error: (_, __) => loggedOutMap,

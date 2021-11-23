@@ -32,7 +32,7 @@ class PaymentPageController extends ChangeNotifier {
 
   Future<void> pay() async {
     await _ref.read(fdlApiProvider).pay(
-          await _ref.read(currentUserProvider)!.getIdToken(),
+          _ref.read(currentUserProvider)!.$id,
           TransactionBuilder(
             amount: amount!,
             payee: user!.id,
