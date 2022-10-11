@@ -31,6 +31,7 @@ GoRouter router(AuthenticationBloc authBloc) {
           state.location != '/login') {
         return '/login';
       }
+      return null;
     },
     routes: [
       ShellRoute(
