@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 context.read<AuthenticationBloc>().add(const LogoutRequested());
               },
-              child: Text('логаут бля'),
+              child: const Text('логаут бля'),
             )
           ],
         ),

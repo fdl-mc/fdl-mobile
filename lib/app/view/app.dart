@@ -1,7 +1,7 @@
 import 'package:auth_repository/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freedomland/authentication/bloc/authentication_bloc.dart';
+import 'package:freedomland/authentication/authentication.dart';
 import 'package:freedomland/router.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -30,26 +30,20 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<AuthenticationBloc>();
-
     return MaterialApp.router(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF4F6D7A),
-          brightness: Brightness.light,
-        ),
+        colorSchemeSeed: const Color(0xFF4F6D7A),
+        brightness: Brightness.light,
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF4F6D7A),
-          brightness: Brightness.dark,
-        ),
+        colorSchemeSeed: const Color(0xFF4F6D7A),
+        brightness: Brightness.dark,
         useMaterial3: true,
       ),
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      routerConfig: router(bloc),
+      routerConfig: router(context.read<AuthenticationBloc>()),
     );
   }
 }
