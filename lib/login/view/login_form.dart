@@ -23,16 +23,19 @@ class LoginForm extends StatelessWidget {
         }
       },
       child: Center(
-        child: ListView(
+        child: Padding(
           padding: const EdgeInsets.all(12.0),
-          shrinkWrap: true,
-          children: [
-            _UsernameInput(),
-            const Padding(padding: EdgeInsets.all(12)),
-            _PasswordInput(),
-            const Padding(padding: EdgeInsets.all(12)),
-            _LoginButton(),
-          ],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _UsernameInput(),
+              const Padding(padding: EdgeInsets.all(12)),
+              _PasswordInput(),
+              const Padding(padding: EdgeInsets.all(12)),
+              _LoginButton(),
+            ],
+          ),
         ),
       ),
     );
