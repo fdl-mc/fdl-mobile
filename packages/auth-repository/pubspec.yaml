@@ -1,0 +1,8 @@
+name: auth_repository
+version: 1.0.0
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies:
+  flutter_secure_storage: ^6.0.0

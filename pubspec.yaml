@@ -11,12 +11,16 @@ dependencies:
   flutter:
     sdk: flutter
 
+  user_repository:
+    path: ./packages/user-repository
+  auth_repository:
+    path: ./packages/auth-repository
+
   bloc: ^8.1.0
   flutter_bloc: ^8.1.1
   go_router: ^5.0.5
-
-  user_repository:
-    path: ./packages/user-repository
+  equatable: ^2.0.5
+  meta: ^1.8.0
 
 dev_dependencies:
   flutter_test:
