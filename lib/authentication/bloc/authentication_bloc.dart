@@ -9,41 +9,43 @@ part 'authentication_state.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
+  late final StreamSubscription<AuthStatus> _subscription;
   final AuthRepository _repository;
 
   AuthenticationBloc(this._repository)
       : super(const AuthenticationState.unknown()) {
-    on<Init>(_onInit);
-    on<LoggedIn>(_onLoggedIn);
-    on<LoggedOut>(_onLoggedOut);
+    on<LogoutRequested>(_onLogoutRequested);
+    on<AuthStatusChanged>(_onAuthStatusChanged);
+
+    _subscription = _repository.status.listen(
+      (status) => add(AuthStatusChanged(status: status)),
+    );
   }
 
-  Future<void> _onInit(
-    Init event,
+  Future<void> _onAuthStatusChanged(
+    AuthStatusChanged event,
     Emitter<AuthenticationState> emit,
   ) async {
-    final token = await _repository.getToken();
-
-    if (token == null) {
-      emit(const AuthenticationState.unauthenticated());
-    } else {
-      emit(AuthenticationState.authenticated(token: token));
+    switch (event.status) {
+      case AuthStatus.unknown:
+        return emit(const AuthenticationState.unknown());
+      case AuthStatus.authenticated:
+        return emit(const AuthenticationState.authenticated());
+      case AuthStatus.unauthenticated:
+        return emit(const AuthenticationState.unauthenticated());
     }
   }
 
-  Future<void> _onLoggedIn(
-    LoggedIn event,
-    Emitter<AuthenticationState> emit,
-  ) async {
-    await _repository.setToken(event.token);
-    emit(AuthenticationState.authenticated(token: event.token));
-  }
-
-  Future<void> _onLoggedOut(
-    LoggedOut event,
+  Future<void> _onLogoutRequested(
+    LogoutRequested event,
     Emitter<AuthenticationState> emit,
   ) async {
     await _repository.deleteToken();
-    emit(const AuthenticationState.unauthenticated());
+  }
+
+  @override
+  Future<void> close() async {
+    _repository.dispose();
+    super.close();
   }
 }

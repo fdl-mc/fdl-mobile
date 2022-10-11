@@ -1,3 +1,4 @@
+import 'package:auth_repository/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freedomland/authentication/authentication.dart';
 import 'package:freedomland/home/home.dart';
@@ -27,7 +28,7 @@ GoRouter router(AuthenticationBloc authBloc) {
   return GoRouter(
     refreshListenable: refreshStream,
     redirect: (context, state) async {
-      if (authBloc.state.status == AuthenticationStatus.unauthenticated &&
+      if (authBloc.state.status == AuthStatus.unauthenticated &&
           state.location != '/login') {
         return '/login';
       }
@@ -37,7 +38,7 @@ GoRouter router(AuthenticationBloc authBloc) {
       ShellRoute(
         builder: (context, state, child) {
           final status = context.read<AuthenticationBloc>().state.status;
-          if (status == AuthenticationStatus.unknown) {
+          if (status == AuthStatus.unknown) {
             return const SplashPage();
           }
           return child;
