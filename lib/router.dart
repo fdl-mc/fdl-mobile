@@ -28,16 +28,23 @@ GoRouter router(AuthenticationBloc authBloc) {
   return GoRouter(
     refreshListenable: refreshStream,
     redirect: (context, state) async {
-      if (authBloc.state.status == AuthStatus.unauthenticated &&
-          state.location != '/login') {
-        return '/login';
+      final loggingIn = state.location == '/login';
+      final loggedIn = authBloc.state.status == AuthStatus.authenticated;
+      if (!loggedIn) {
+        if (!loggingIn) {
+          return '/login';
+        } else {
+          return null;
+        }
       }
+
+      if (loggingIn) return '/';
       return null;
     },
     routes: [
       ShellRoute(
         builder: (context, state, child) {
-          final status = context.read<AuthenticationBloc>().state.status;
+          final status = context.watch<AuthenticationBloc>().state.status;
           if (status == AuthStatus.unknown) {
             return const SplashPage();
           }

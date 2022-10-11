@@ -4,10 +4,12 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 enum AuthStatus { unknown, authenticated, unauthenticated }
 
 class AuthRepository {
-  final FlutterSecureStorage _storage = FlutterSecureStorage();
-  final StreamController<AuthStatus> _controller = StreamController();
+  final FlutterSecureStorage _storage;
+  final StreamController<AuthStatus> _controller;
 
-  AuthRepository();
+  AuthRepository()
+      : _storage = FlutterSecureStorage(),
+        _controller = StreamController.broadcast();
 
   Stream<AuthStatus> get status async* {
     if (await tokenExists()) {
@@ -33,7 +35,7 @@ class AuthRepository {
   }
 
   Future<bool> tokenExists() async {
-    return await getToken() != null;
+    return await _storage.containsKey(key: 'token');
   }
 
   void dispose() {

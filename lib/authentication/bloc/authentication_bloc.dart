@@ -17,9 +17,9 @@ class AuthenticationBloc
     on<LogoutRequested>(_onLogoutRequested);
     on<AuthStatusChanged>(_onAuthStatusChanged);
 
-    _subscription = _repository.status.listen(
-      (status) => add(AuthStatusChanged(status: status)),
-    );
+    _subscription = _repository.status.listen((status) {
+      add(AuthStatusChanged(status: status));
+    });
   }
 
   Future<void> _onAuthStatusChanged(
@@ -46,6 +46,7 @@ class AuthenticationBloc
   @override
   Future<void> close() async {
     _repository.dispose();
+    _subscription.cancel();
     super.close();
   }
 }
