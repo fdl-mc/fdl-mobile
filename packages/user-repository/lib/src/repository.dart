@@ -1,42 +1,40 @@
 import 'package:user_repository/user_repository.dart';
-import 'package:users_service/users.pbgrpc.dart' as pb;
-import 'package:grpc/grpc.dart';
+import 'package:users_service/api.dart' as oai;
 
 class UserRepository {
-  late final pb.UsersClient _client;
+  final String base;
 
-  UserRepository({
-    String host = "api.fdl-mc.ru",
-    int port = 443,
-  }) {
-    final channel = ClientChannel(host, port: port);
-    _client = pb.UsersClient(channel);
+  UserRepository({this.base = "https://api.fdl-mc.ru/users/v1"});
+
+  oai.ApiClient _createApiClient({String? token}) {
+    final auth = token == null ? null : oai.ApiKeyAuth('header', 'X-Token');
+    auth?.apiKey = token!;
+
+    return oai.ApiClient(basePath: base, authentication: auth);
   }
+
+  oai.UsersApi _createUsersApi({String? token}) =>
+      oai.UsersApi(_createApiClient(token: token));
+
+  oai.AuthApi _createAuthApi({String? token}) =>
+      oai.AuthApi(_createApiClient(token: token));
 
   Future<String> login({
     required String username,
     required String password,
   }) async {
-    final reply = await _client.login(
-      pb.LoginRequest(
-        username: username,
-        password: password,
-      ),
+    final res = await _createAuthApi().login(
+      oai.LoginRequest(username: username, password: password),
     );
 
-    return reply.token;
+    return res!.token;
   }
 
   Future<User> getSelfUser({
     required String token,
   }) async {
-    final reply = await _client.getSelfUser(
-      pb.GetSelfUserRequest(),
-      options: CallOptions(
-        metadata: {'Authentication': token},
-      ),
-    );
+    final res = await _createUsersApi(token: token).getSelf();
 
-    return User.fromMessage(reply.user);
+    return User.fromOai(res!);
   }
 }

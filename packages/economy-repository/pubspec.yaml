@@ -1,4 +1,4 @@
-name: user_repository
+name: economy_repository
 version: 1.0.0
 publish_to: none
 
@@ -6,5 +6,5 @@ environment:
   sdk: '>=2.18.2 <3.0.0'
 
 dependencies:
-  users_service:
-    path: ../users-service
+  economy_service:
+    path: ../economy-service

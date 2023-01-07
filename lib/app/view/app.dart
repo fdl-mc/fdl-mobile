@@ -1,4 +1,5 @@
 import 'package:auth_repository/auth_repository.dart';
+import 'package:economy_repository/economy_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freedomland/authentication/authentication.dart';
@@ -14,6 +15,7 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider(create: (_) => AuthRepository()),
         RepositoryProvider(create: (_) => UserRepository()),
+        RepositoryProvider(create: (_) => EconomyRepository()),
       ],
       child: BlocProvider(
         create: (context) => AuthenticationBloc(context.read<AuthRepository>()),

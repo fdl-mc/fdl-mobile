@@ -13,6 +13,8 @@ dependencies:
 
   user_repository:
     path: ./packages/user-repository
+  economy_repository:
+    path: ./packages/economy-repository
   auth_repository:
     path: ./packages/auth-repository
 
@@ -22,6 +24,7 @@ dependencies:
   equatable: ^2.0.5
   meta: ^1.8.0
   formz: ^0.4.1
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:

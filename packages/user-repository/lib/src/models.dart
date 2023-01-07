@@ -1,4 +1,4 @@
-import 'package:users_service/users.pb.dart' as pb;
+import 'package:users_service/api.dart' as oai;
 
 class User {
   final int id;
@@ -9,7 +9,7 @@ class User {
     required this.username,
   });
 
-  factory User.fromMessage(pb.User msg) {
-    return User(id: msg.id, username: msg.nickname);
+  factory User.fromOai(oai.User user) {
+    return User(id: user.id, username: user.nickname);
   }
 }

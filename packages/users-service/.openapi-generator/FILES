@@ -1,0 +1,16 @@
+lib/api.dart
+lib/api/auth_api.dart
+lib/api/users_api.dart
+lib/api_client.dart
+lib/api_exception.dart
+lib/api_helper.dart
+lib/auth/api_key_auth.dart
+lib/auth/authentication.dart
+lib/auth/http_basic_auth.dart
+lib/auth/http_bearer_auth.dart
+lib/auth/oauth.dart
+lib/model/app_error.dart
+lib/model/login_request.dart
+lib/model/login_response.dart
+lib/model/user.dart
+pubspec.yaml
